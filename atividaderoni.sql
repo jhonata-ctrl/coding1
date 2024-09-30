@@ -1,11 +1,11 @@
-CREATE SCHEMA mercado_bd;
+jhonata teles: CREATE SCHEMA mercado_bd;
 USE mercado_bd;
 -- CRIANDO TABELAS
 CREATE TABLE produtos(
 	id_produto INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100),
     categoria VARCHAR(100),
-    preco DECIMAL(10,2),
+    preco DECIMAL(10,10),
     estoque INT
 );
 CREATE TABLE clientes(
@@ -26,43 +26,43 @@ CREATE TABLE vendas(
 -- INSERINDO DADOS
 INSERT INTO produtos (nome, categoria, preco, estoque)
 VALUES
-('Samsung Galaxy S24 Ultra', 'Smartphone', 4750.99, 105),
-('Fone de ouvido Bluetooth', 'Fones', 473.95, 205),
-('Iphone 16Pro Max', 'Smartphone', 16.500 , 57),
-('Teclado Gamer', 'Acessorios', 250.00, 15),
-('Xiaomi Redmi Note 13', 'Smartphone', 1700.00, 102),
-('Fonte 500W real','Acessorios', 678.99, 500);
+('TSmart TV 50" 4K UHD LED Samsung 50DU7700- Wi-Fi Bluetooth Alexa 3 HDMI', 'TV', 2.299.08, 90),
+('Xbox Series S Nova Geração 512GB SSD - 1 Controle Branco Microsoft', 'VIDEOGAME', 2.882,07, 68),
+('Monitor Gamer Pichau Centauri Pulse Pro 27, 27 Pol, IPS, 2K, 1ms, 240Hz, FreeSync, HDMI/DP, PG-CTPROS27-BL01', 'MONITOR', 1.499,99, 60),
+('Telefone Com Fio Intelbras Pleno - Preto', 'TELEFONE FIXO', 72.00, 99),
+('Apple iPad 10,9" (10ª geração, Wi-Fi, 64GB) - Azul', 'TABLET', 3.399,00, 30),
+('Lousa eletronica unionboard color cinza 82 polegadas','LOUSA ELETRONICA', 3.890,00, 15);
 INSERT INTO clientes(nome, email, telefone)
 VALUES
-('Carlos Jose','carlosjose@gamil.com','(81) 9 5545-4050'),
-('Mário','mario@gmail.com','(81) 9 5423-6789'),
-('Luigi','luigi@gmail.com','(33) 9 4321-1234'),
-('Piache','piache@gmail.com','(51) 9 9876-6789'),
-('Bauser','bauser@gmail.com','(53) 9 0987-4710');
+('Cezar Guilherme','cezarguilherme2005@gmail.com','(81) 9 3274-4585'),
+('Paulo','paulo203@gmail.com','(81) 9 5423-6789'),
+('Tereza','tereza192@gmail.com','(43) 9 3875-3473'),
+('Kelly','kelly003@gmail.com','(51) 9 9876-8357'),
+('Bruno','bruno4493@gmail.com','(69) 9 3845-3855');
 INSERT INTO vendas (id_produto, id_cliente, quantidade, data_venda)
 VALUES
-    (1, 1, 2, '2024-09-01'), -- Carlos Jose comprou 2 Samsung
-    (2, 2, 1, '2024-09-01'), -- Mário comprou 1 Fone de ouvido
-    (3, 3, 3, '2024-09-03'), -- Luigi comprou 3 Iphones
-    (4, 4, 5, '2024-09-01'), -- Piache comprou 5 Teclado Gamer
-    (5, 1, 4, '2024-09-03'), -- Carlos Jose comprou 4 Xiaomi
-    (1, 2, 1, '2024-09-01'), -- Mário comprou 1 Samsung
-    (6, 3, 10, '2024-09-07'), -- Luigi comprou 10 Fonte
-    (2, 4, 6, '2024-09-01'), -- Piache comprou 6 Fone
-    (3, 5, 2, '2024-09-03'), -- Bauser comprou 2 Iphones
-    (4, 1, 1, '2024-09-01'); -- Carlos Jose comprou 1 Teclado gamer
+    (1, 1, 2, '2024-09-01'), -- Cezar Guilherme comprou 2 TV Samsung
+    (2, 2, 1, '2024-09-01'), -- Paulo comprou 1 Lousa Eletronica
+    (3, 3, 3, '2024-09-03'), -- Kelly comprou 3 Apple Pad
+    (4, 4, 5, '2024-09-01'), -- Bruno comprou 5 Monitor gamer
+    (5, 5, 4, '2024-09-03'), -- Tereza comprou 4 XBOX SERIES S 
+    (1, 3, 1, '2024-09-01'), -- Kelly comprou 1 TV Samsung
+    (6, 1, 10, '2024-09-07'), -- Cezar Guilherme  comprou 10 Telefone com fio
+    (3, 4, 6, '2024-09-01'), -- Bruno comprou 6 Apple Pad
+    (2, 5, 2, '2024-09-03'), -- Tereza comprou 2 Lousa ELetronica
+    (4, 2, 1, '2024-09-01'); -- Paulo comprou 1 Monitor Gamer
 -- Atulizar preço/telefone
-UPDATE produtos SET preco = 4780.45
-WHERE id_produto = 3;
-UPDATE clientes SET telefone = '(81) 9 555-798'
+UPDATE produtos SET preco = 80.99
+WHERE id_produto = 1;
+UPDATE clientes SET telefone = '(62) 9 8625-5622'
 WHERE id_cliente = 1; 
 -- Removendo dados
-DELETE FROM vendas WHERE id_cliente = 1;
+DELETE FROM vendas WHERE id_vendas = 1;
 DELETE FROM clientes WHERE id_cliente = 1;
 -- Ordernar valores
 SELECT preco FROM produtos ORDER BY preco ASC;
 -- Consultas
-SELECT * FROM produtos WHERE categoria = 'Smartphone';
+SELECT * FROM produtos WHERE categoria = 'Telefone';
 SELECT * FROM vendas WHERE data_venda = '2024-09-01';
 SELECT id_produto, SUM(quantidade) AS total_vendas
 FROM vendas
@@ -80,4 +80,4 @@ SELECT
 SELECT nome FROM produtos ORDER BY nome ASC;
 SELECT nome FROM clientes ORDER BY nome DESC;
 SELECT * FROM clientes;
-SELECT * FROM vendas;
+SELECT * FROM vendas:
